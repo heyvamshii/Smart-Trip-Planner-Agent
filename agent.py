@@ -29,7 +29,8 @@ TOOL_FUNCTIONS = {
     "calculate_budget": calculate_budget,
 }
 
-# OpenAI-style tool schemas that tell the model what each tool does and expects.
+# Groq tool schemas (OpenAI-compatible format) that tell the model what each tool
+# does and expects.
 TOOLS_SCHEMA = [
     {
         "type": "function",

@@ -1,9 +1,10 @@
 # Smart Trip Planner Agent
 
 An agentic AI that plans a trip by deciding which tools to call — flight search,
-hotel search, weather, and a budget check — then writes a day-by-day itinerary.
-Built for zero cost: Gemini's free API tier as the agent brain, Streamlit for the
-interface.
+hotel search, weather, on-ground cost estimates, and a full budget check — then
+writes a day-by-day itinerary.
+Built for zero cost: Groq's free API tier (Llama 3.3 70B) as the agent brain,
+Streamlit for the interface.
 
 ## Setup
 
@@ -15,7 +16,7 @@ interface.
    pip install -r requirements.txt
    ```
 
-2. Get a free Gemini API key: https://aistudio.google.com/apikey
+2. Get a free Groq API key: https://console.groq.com/keys
 
 3. Copy `.env.example` to `.env` and paste in your key:
 
@@ -35,9 +36,9 @@ interface.
 
 ## How it works
 
-- `tools.py` — four plain Python functions: `search_flights`, `search_hotels`,
-  `get_weather`, `calculate_budget`.
-- `agent.py` — gives those functions to Gemini as tools, runs the tool-call loop,
+- `tools.py` — five plain Python functions: `search_flights`, `search_hotels`,
+  `get_weather`, `estimate_local_costs`, `calculate_budget`.
+- `agent.py` — gives those functions to Groq's Llama 3.3 as tools, runs the tool-call loop,
   and reports every step (input, each tool call, each tool result, final output)
   through a callback.
 - `app.py` — Streamlit UI with two panels: chat on the left, a live "Agent
